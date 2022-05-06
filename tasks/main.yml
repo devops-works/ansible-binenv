@@ -20,6 +20,5 @@
     apply:
       tags:
         - binenv
-  when: not binenv_skip_environment
   tags:
     - always
