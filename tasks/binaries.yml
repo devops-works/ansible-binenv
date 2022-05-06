@@ -1,0 +1,4 @@
+---
+- name: Install required binaries
+  command: binenv -g install {{ item }}
+  loop: "{{ binenv_binaries }}"

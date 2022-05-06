@@ -1,0 +1,5 @@
+- name: Sets BINENV_GLOBAL in environment
+  ansible.builtin.lineinfile:
+    path: /etc/environment
+    regexp: '^BINENV_GLOBAL='
+    line: BINENV_GLOBAL=true

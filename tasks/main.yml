@@ -1,0 +1,25 @@
+---
+- name: Checks if binenv is already present
+  stat:
+    path: /usr/local/bin/binenv
+  register: __binenv
+  tags:
+    - binenv
+
+- include_tasks:
+    file: binenv.yml
+    apply:
+      tags:
+        - binenv
+  when: not __binenv.stat.exists or binenv_force_install
+  tags:
+    - always
+
+- include_tasks:
+    file: environment.yml
+    apply:
+      tags:
+        - binenv
+  when: not binenv_skip_environment
+  tags:
+    - always
